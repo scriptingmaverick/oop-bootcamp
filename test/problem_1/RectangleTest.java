@@ -11,4 +11,11 @@ class RectangleTest {
 
     assertEquals(rectangle, Rectangle.create(3, 4));
   }
+
+  @Test
+  void shouldCalculateArea() {
+    Rectangle rectangle = Rectangle.create(3, 4);
+
+    assert (12 == rectangle.calculateArea());
+  }
 }

@@ -27,4 +27,8 @@ public class Rectangle {
   public int hashCode() {
     return Objects.hash(breadth, length);
   }
+
+  public int calculateArea() {
+    return this.breadth * this.length;
+  }
 }
