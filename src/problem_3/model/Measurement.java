@@ -9,7 +9,7 @@ public class Measurement<T extends Unit> {
     this.unit = unit;
   }
 
-  private static <T extends Unit> double normalize(Measurement<T> obj) {
+  protected static <T extends Unit> double normalize(Measurement<T> obj) {
     return obj.unit.normalize(obj.quantity);
   }
 

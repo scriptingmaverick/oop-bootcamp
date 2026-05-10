@@ -46,4 +46,13 @@ class LengthTest {
 
     assertThrows(MeasurementMismatch.class, () -> three_78Cms.compare(three_78Litres));
   }
+
+  @Test
+  void shouldAddtwoLengthsAndReturnStandardLength() {
+    Length twoInches = Length.create(2, LengthUnit.INCH);
+
+    Length result = twoInches.add(twoInches);
+    
+    assert (result.compare(Length.create(4, LengthUnit.INCH)));
+  }
 }

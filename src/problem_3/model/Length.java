@@ -16,7 +16,13 @@ public class Length extends Measurement<LengthUnit> {
     if (!otherMeasurement.getClass().getName().equals(this.getClass().getName())) {
       throw new MeasurementMismatch();
     }
-    
+
     return super.compare(otherMeasurement);
+  }
+
+  public Length add(Length otherLength) {
+    double sumOfLengths = normalize(this) + normalize(otherLength);
+    
+    return create(sumOfLengths, LengthUnit.INCH);
   }
 }
