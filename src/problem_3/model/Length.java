@@ -2,7 +2,7 @@ package problem_3.model;
 
 import problem_3.exception.MeasurementMismatch;
 
-public class Length extends Measurement<LengthUnit> {
+public class Length extends Measurement<LengthUnit> implements Addable<Length> {
   private Length(double length, LengthUnit lengthUnit) {
     super(length, lengthUnit);
   }
@@ -20,9 +20,10 @@ public class Length extends Measurement<LengthUnit> {
     return super.compare(otherMeasurement);
   }
 
-  public Length add(Length otherLength) {
-    double sumOfLengths = normalize(this) + normalize(otherLength);
-    
+  @Override
+  public Length add(Length otherMeasurement) {
+    double sumOfLengths = normalize(this) + normalize(otherMeasurement);
+
     return create(sumOfLengths, LengthUnit.INCH);
   }
 }

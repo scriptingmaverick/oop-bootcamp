@@ -48,11 +48,21 @@ class LengthTest {
   }
 
   @Test
-  void shouldAddtwoLengthsAndReturnStandardLength() {
+  void shouldAddTwoLengthsAndReturnStandardLength() {
     Length twoInches = Length.create(2, LengthUnit.INCH);
 
     Length result = twoInches.add(twoInches);
-    
+
     assert (result.compare(Length.create(4, LengthUnit.INCH)));
+  }
+
+  @Test
+  void shouldAdd2InchesAnd2_5CmsAndReturn3Inches() {
+    Length twoInches = Length.create(2, LengthUnit.INCH);
+    Length two_5cms = Length.create(2.5, LengthUnit.CM);
+
+    Length result = twoInches.add(two_5cms);
+
+    assert (result.compare(Length.create(3, LengthUnit.INCH)));
   }
 }
