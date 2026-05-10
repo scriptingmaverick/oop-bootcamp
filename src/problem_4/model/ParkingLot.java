@@ -25,11 +25,11 @@ public class ParkingLot {
     parkingSlots.add(vehicle);
     parkingLotEventManager.notify(ParkingEvents.PARKED);
 
-    if (parkingSlots.size() <= (capacity * 0.2)) {
+    if (parkingSlots.size() <= Math.ceil(capacity * 0.2)) {
       parkingLotEventManager.notify(ParkingEvents.BELOW_TWENTY_PERCENT);
     }
 
-    if (parkingSlots.size() >= (capacity * 0.8)) {
+    if (parkingSlots.size() >= Math.ceil(capacity * 0.8)) {
       parkingLotEventManager.notify(ParkingEvents.EIGHTY_PERCENT_FULL);
     }
 

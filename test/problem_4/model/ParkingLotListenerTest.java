@@ -31,6 +31,18 @@ class ParkingLotListenerTest {
     }
 
     @Test
+    void shouldNotifiedWhenALotIs20PercentOrLessOccupied() {
+      parkingLot.subscribe(ParkingEvents.BELOW_TWENTY_PERCENT, attendant);
+      parkingLot.park(new Vehicle());
+      parkingLot.park(new Vehicle());
+
+      InOrder inOrder = inOrder(attendant);
+      inOrder.verify(attendant).update("PARKED has happened.");
+      inOrder.verify(attendant).update("BELOW_TWENTY_PERCENT has happened.");
+      inOrder.verify(attendant).update("PARKED has happened.");
+    }
+
+    @Test
     void shouldNotifiedWhenLotIsFull() {
       parkingLot.park(new Vehicle());
       parkingLot.park(new Vehicle());
@@ -80,6 +92,29 @@ class ParkingLotListenerTest {
       parkingLot.park(new Vehicle());
 
       verify(manager).update("EIGHTY_PERCENT_FULL has happened.");
+    }
+  }
+
+  @DisplayName("civicBody functionalities: ")
+  @Nested
+  class CivicBodyResponsibilities {
+    private ParkingLotListener civicBody = mock(ParkingLotListener.class);
+    private ParkingLot parkingLot;
+
+    @BeforeEach
+    void setup() {
+      parkingLot = ParkingLot.create(5);
+      parkingLot.subscribe(ParkingEvents.EIGHTY_PERCENT_FULL, civicBody);
+    }
+
+    @Test
+    void shouldBeNotifiedWhenLotIs80PercentFull() {
+      parkingLot.park(new Vehicle());
+      parkingLot.park(new Vehicle());
+      parkingLot.park(new Vehicle());
+      parkingLot.park(new Vehicle());
+
+      verify(civicBody).update("EIGHTY_PERCENT_FULL has happened.");
     }
   }
 }
