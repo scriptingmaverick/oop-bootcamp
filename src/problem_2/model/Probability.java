@@ -28,4 +28,8 @@ public class Probability {
   public Probability not() {
     return new Probability(1 - probability);
   }
+
+  public Probability and(Probability otherEvent) {
+    return new Probability(this.probability * otherEvent.probability);
+  }
 }
