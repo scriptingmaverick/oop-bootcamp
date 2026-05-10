@@ -12,7 +12,7 @@ public class Rectangle {
     this.length = length;
   }
 
-  public static Rectangle create(double breadth, double length) {
+  public static Rectangle createRectangle(double breadth, double length) {
     return new Rectangle(breadth, length);
   }
 
