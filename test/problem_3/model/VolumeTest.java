@@ -1,6 +1,7 @@
 package problem_3.model;
 
 import org.junit.jupiter.api.Test;
+import problem_3.exception.ImpossibleValueException;
 import problem_3.exception.MeasurementMismatch;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -22,7 +23,7 @@ class VolumeTest {
 
     assertThrows(MeasurementMismatch.class, () -> three_78Litres.compare(three_78Cms));
   }
-  
+
   @Test
   void shouldAdd1GalAnd1LAndReturn4_78L() {
     Volume oneGal = Volume.create(1, VolumeUnit.GAL);
@@ -31,5 +32,10 @@ class VolumeTest {
     Volume result = oneGal.add(oneL);
 
     assert (result.compare(Volume.create(4.78, VolumeUnit.L)));
+  }
+
+  @Test
+  void shouldThrowError() {
+    assertThrows(ImpossibleValueException.class, () -> Volume.create(-452, VolumeUnit.L));
   }
 }

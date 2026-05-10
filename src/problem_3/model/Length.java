@@ -1,5 +1,6 @@
 package problem_3.model;
 
+import problem_3.exception.ImpossibleValueException;
 import problem_3.exception.MeasurementMismatch;
 
 public class Length extends Measurement<LengthUnit> implements Addable<Length> {
@@ -8,6 +9,8 @@ public class Length extends Measurement<LengthUnit> implements Addable<Length> {
   }
 
   public static Length create(double length, LengthUnit unit) {
+    if (length <= 0) throw new ImpossibleValueException("Error: Length should be valid.");
+
     return new Length(length, unit);
   }
 

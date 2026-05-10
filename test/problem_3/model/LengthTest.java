@@ -1,6 +1,7 @@
 package problem_3.model;
 
 import org.junit.jupiter.api.Test;
+import problem_3.exception.ImpossibleValueException;
 import problem_3.exception.MeasurementMismatch;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -64,5 +65,10 @@ class LengthTest {
     Length result = twoInches.add(two_5cms);
 
     assert (result.compare(Length.create(3, LengthUnit.INCH)));
+  }
+
+  @Test
+  void shouldThrowError() {
+    assertThrows(ImpossibleValueException.class, () -> Length.create(-2.362, LengthUnit.CM));
   }
 }
