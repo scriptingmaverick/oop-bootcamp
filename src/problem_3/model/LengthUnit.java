@@ -13,6 +13,6 @@ public enum LengthUnit {
   }
 
   public double normalize(double length) {
-    return this.standardLength * length;
+    return (double) Math.ceil(this.standardLength * length);
   }
 }

@@ -10,4 +10,12 @@ class LengthTest {
 
     assert (oneFeet.compare(twelveInches));
   }
+
+  @Test
+  void shouldCompareAndReturnTrue() {
+    Length fiveCms = Length.create(5, LengthUnit.CM);
+    Length twoInches = Length.create(2, LengthUnit.INCH);
+
+    assert (fiveCms.compare(twoInches));
+  }
 }
