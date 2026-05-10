@@ -37,4 +37,8 @@ public class Probability {
     double probability = this.probability + otherEvent.probability - (this.probability * otherEvent.probability);
     return new Probability(probability);
   }
+
+  public Probability deMorganForm(Probability otherEvent) {
+    return not().and(otherEvent.not()).not();
+  }
 }

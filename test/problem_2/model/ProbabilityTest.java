@@ -42,4 +42,13 @@ class ProbabilityTest {
 
     assertEquals(chanceForGettingAtLeastOneTail, Probability.create(0.75));
   }
+
+  @Test
+  void shouldRepresentAChanceForGettingAtLeastOneTailsOn2CoinsInDeMorganForm() {
+    Probability chanceOfGettingATail = Probability.create(0.5);
+
+    Probability chanceForGettingAtLeastOneTail = chanceOfGettingATail.deMorganForm(chanceOfGettingATail);
+
+    assertEquals(chanceForGettingAtLeastOneTail, Probability.create(0.75));
+  }
 }
