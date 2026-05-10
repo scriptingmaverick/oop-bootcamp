@@ -9,7 +9,7 @@ public enum VolumeUnit {
     this.standardValue = standardValue;
   }
 
-  public double normalize(double volume) {
+  public double normalize(int volume) {
     return this.standardValue * volume;
   }
 }

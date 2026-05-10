@@ -1,6 +1,6 @@
 package problem_3.model;
 
-public enum LengthUnit {
+public enum LengthUnit implements Unit {
   MM(0.04),
   CM(0.4),
   FEET(12),
@@ -12,6 +12,7 @@ public enum LengthUnit {
     this.standardLength = standardLength;
   }
 
+  @Override
   public double normalize(double length) {
     return this.standardLength * length;
   }
