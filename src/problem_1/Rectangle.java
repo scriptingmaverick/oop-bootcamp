@@ -28,7 +28,11 @@ public class Rectangle {
     return Objects.hash(breadth, length);
   }
 
-  public int calculateArea() {
+  public double calculateArea() {
     return this.breadth * this.length;
+  }
+
+  public double calculatePerimeter() {
+    return 2 * (breadth + length);
   }
 }

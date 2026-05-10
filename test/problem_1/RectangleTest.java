@@ -16,6 +16,13 @@ class RectangleTest {
   void shouldCalculateArea() {
     Rectangle rectangle = Rectangle.create(3, 4);
 
-    assert (12 == rectangle.calculateArea());
+    assert (12.0 == rectangle.calculateArea());
+  }
+
+  @Test
+  void shouldCalculatePerimeter() {
+    Rectangle rectangle = Rectangle.create(3, 4);
+
+    assert (14.0 == rectangle.calculatePerimeter());
   }
 }
