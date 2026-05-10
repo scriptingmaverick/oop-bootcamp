@@ -16,6 +16,10 @@ public class Rectangle {
     return new Rectangle(breadth, length);
   }
 
+  public static Rectangle createSquare(double side) {
+    return new Rectangle(side, side);
+  }
+
   @Override
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;

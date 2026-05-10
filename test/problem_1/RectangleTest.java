@@ -32,4 +32,18 @@ class RectangleTest {
 
     assert (19.4 == rectangle.calculatePerimeter());
   }
+
+  @Test
+  void shouldCalculateAreaForSquare() {
+    Rectangle square = Rectangle.createSquare(3);
+
+    assert (9 == square.calculateArea());
+  }
+
+  @Test
+  void shouldCalculatePerimeterForSquare() {
+    Rectangle square = Rectangle.createSquare(3.8);
+
+    assert (14.44 == square.calculateArea());
+  }
 }
