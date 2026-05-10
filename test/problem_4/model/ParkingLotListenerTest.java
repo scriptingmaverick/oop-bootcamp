@@ -48,7 +48,7 @@ class ParkingLotListenerTest {
       ParkingLot parkingLot2 = ParkingLot.create(2);
       parkingLot2.subscribe(ParkingEvents.PARKED, attendant);
       parkingLot2.subscribe(ParkingEvents.FULL, attendant);
-      
+
       parkingLot.park(new Vehicle());
       parkingLot.park(new Vehicle());
       parkingLot2.park(new Vehicle());
@@ -63,6 +63,23 @@ class ParkingLotListenerTest {
   @DisplayName("parking lot manager functionalities: ")
   @Nested
   class ManagerResponsibilities {
+    private ParkingLotListener manager = mock(ParkingLotListener.class);
+    private ParkingLot parkingLot;
 
+    @BeforeEach
+    void setup() {
+      parkingLot = ParkingLot.create(5);
+      parkingLot.subscribe(ParkingEvents.EIGHTY_PERCENT_FULL, manager);
+    }
+
+    @Test
+    void shouldBeNotifiedWhenLotIs80PercentFull() {
+      parkingLot.park(new Vehicle());
+      parkingLot.park(new Vehicle());
+      parkingLot.park(new Vehicle());
+      parkingLot.park(new Vehicle());
+
+      verify(manager).update("EIGHTY_PERCENT_FULL has happened.");
+    }
   }
 }
