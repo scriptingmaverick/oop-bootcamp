@@ -18,4 +18,8 @@ public class Balls {
       }
     }
   }
+
+  public int filterBalls(Colors color) {
+    return balls.get(color) == null ? 0 : balls.get(color).size();
+  }
 }
