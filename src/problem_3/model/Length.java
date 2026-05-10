@@ -5,7 +5,7 @@ public class Length {
   private final double length;
   private final LengthUnit lengthUnit;
 
-  public Length(double length, LengthUnit lengthUnit) {
+  private Length(double length, LengthUnit lengthUnit) {
     this.length = length;
     this.lengthUnit = lengthUnit;
   }
