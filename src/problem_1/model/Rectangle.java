@@ -1,4 +1,6 @@
-package problem_1;
+package problem_1.model;
+
+import problem_1.exception.ImpossibleLengthException;
 
 import java.util.Objects;
 
@@ -12,12 +14,18 @@ public class Rectangle {
     this.length = length;
   }
 
-  public static Rectangle createRectangle(double breadth, double length) {
+  private static Rectangle create(double breadth, double length) {
+    if (breadth <= 0 || length <= 0) throw new ImpossibleLengthException();
+
     return new Rectangle(breadth, length);
   }
 
+  public static Rectangle createRectangle(double breadth, double length) {
+    return create(breadth, length);
+  }
+
   public static Rectangle createSquare(double side) {
-    return new Rectangle(side, side);
+    return create(side, side);
   }
 
   @Override

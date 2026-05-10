@@ -1,8 +1,10 @@
-package problem_1;
+package problem_1.model;
 
 import org.junit.jupiter.api.Test;
+import problem_1.exception.ImpossibleLengthException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RectangleTest {
   @Test
@@ -45,5 +47,15 @@ class RectangleTest {
     Rectangle square = Rectangle.createSquare(3.8);
 
     assert (14.44 == square.calculateArea());
+  }
+
+  @Test
+  void shouldThrowErrorWhenCreatingRectangle() {
+    assertThrows(ImpossibleLengthException.class, () -> Rectangle.createRectangle(-425, -4674));
+  }
+
+  @Test
+  void shouldThrowErrorWhenCreatingSquare() {
+    assertThrows(ImpossibleLengthException.class, () -> Rectangle.createSquare(-1));
   }
 }
