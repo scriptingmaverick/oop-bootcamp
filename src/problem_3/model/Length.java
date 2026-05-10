@@ -22,8 +22,9 @@ public class Length extends Measurement<LengthUnit> implements Addable<Length> {
 
   @Override
   public Length add(Length otherMeasurement) {
-    double sumOfLengths = normalize(this) + normalize(otherMeasurement);
+    double rawSum = normalize(this) + normalize(otherMeasurement);
+    double sum = formatSum(rawSum);
 
-    return create(sumOfLengths, LengthUnit.INCH);
+    return create(sum, LengthUnit.INCH);
   }
 }
