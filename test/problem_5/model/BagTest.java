@@ -74,7 +74,37 @@ class BagTest {
     for (int i = 0; i < 5; i++) {
       bag.add(new Ball(Colors.YELLOW));
     }
-    
+
     assertThrows(YellowBallLimitException.class, () -> bag.add(new Ball(Colors.YELLOW)));
+  }
+
+  @Test
+  void shouldThrowWhenBlueBallLimitReached() {
+    Bag bag = Bag.create(12, new BlueBallRule());
+
+    bag.add(new Ball(Colors.GREEN));
+    bag.add(new Ball(Colors.RED));
+    bag.add(new Ball(Colors.RED));
+
+    for (int i = 0; i < 9; i++) {
+      bag.add(new Ball(Colors.BLUE));
+    }
+
+    assertThrows(BlueBallLimitException.class, () -> bag.add(new Ball(Colors.BLUE)));
+  }
+
+  @Test
+  void shouldThrowWhenBagCapacityLimitReached() {
+    Bag bag = Bag.create(12, new BagCapacityRule());
+
+    bag.add(new Ball(Colors.GREEN));
+    bag.add(new Ball(Colors.RED));
+    bag.add(new Ball(Colors.RED));
+
+    for (int i = 0; i < 9; i++) {
+      bag.add(new Ball(Colors.BLUE));
+    }
+
+    assertThrows(BagCapacityExceedException.class, () -> bag.add(new Ball(Colors.BLUE)));
   }
 }
