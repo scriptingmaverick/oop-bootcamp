@@ -1,8 +1,10 @@
 package problem_2.model;
 
 import org.junit.jupiter.api.Test;
+import problem_2.exception.InvalidProbability;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ProbabilityTest {
 
@@ -50,5 +52,10 @@ class ProbabilityTest {
     Probability chanceForGettingAtLeastOneTail = chanceOfGettingATail.deMorganForm(chanceOfGettingATail);
 
     assertEquals(chanceForGettingAtLeastOneTail, Probability.create(0.75));
+  }
+
+  @Test
+  void shouldThrowInvalidProbabilityError() {
+    assertThrows(InvalidProbability.class, () -> Probability.create(-35.476));
   }
 }

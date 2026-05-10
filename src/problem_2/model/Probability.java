@@ -1,5 +1,7 @@
 package problem_2.model;
 
+import problem_2.exception.InvalidProbability;
+
 import java.util.Objects;
 
 public class Probability {
@@ -10,6 +12,7 @@ public class Probability {
   }
 
   public static Probability create(double percentage) {
+    if (percentage < 0) throw new InvalidProbability();
     return new Probability(percentage);
   }
 
