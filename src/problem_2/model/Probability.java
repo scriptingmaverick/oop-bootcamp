@@ -32,4 +32,9 @@ public class Probability {
   public Probability and(Probability otherEvent) {
     return new Probability(this.probability * otherEvent.probability);
   }
+
+  public Probability or(Probability otherEvent) {
+    double probability = this.probability + otherEvent.probability - (this.probability * otherEvent.probability);
+    return new Probability(probability);
+  }
 }

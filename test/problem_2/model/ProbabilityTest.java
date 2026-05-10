@@ -26,4 +26,20 @@ class ProbabilityTest {
     Probability result = probabilityOfGettingTailOnACoin.and(probabilityOfGettingTailOnACoin);
     assertEquals(result, Probability.create(0.25));
   }
+
+  @Test
+  void shouldRepresentChanceForGetting3OnADice() {
+    Probability probability = Probability.create((double) (1 / 6));
+
+    assertEquals(probability, Probability.create((double) (1 / 6)));
+  }
+
+  @Test
+  void shouldRepresentAChanceForGettingAtLeastOneTailsOn2Coins() {
+    Probability chanceOfGettingATail = Probability.create(0.5);
+
+    Probability chanceForGettingAtLeastOneTail = chanceOfGettingATail.or(chanceOfGettingATail);
+
+    assertEquals(chanceForGettingAtLeastOneTail, Probability.create(0.75));
+  }
 }
