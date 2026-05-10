@@ -25,4 +25,11 @@ class RectangleTest {
 
     assert (14.0 == rectangle.calculatePerimeter());
   }
+
+  @Test
+  void shouldCalculatePerimeterForDoubleValues() {
+    Rectangle rectangle = Rectangle.create(3.8, 5.9);
+
+    assert (19.4 == rectangle.calculatePerimeter());
+  }
 }

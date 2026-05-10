@@ -4,15 +4,15 @@ import java.util.Objects;
 
 public class Rectangle {
 
-  private final int breadth;
-  private final int length;
+  private final double breadth;
+  private final double length;
 
-  private Rectangle(int breadth, int length) {
+  private Rectangle(double breadth, double length) {
     this.breadth = breadth;
     this.length = length;
   }
 
-  public static Rectangle create(int breadth, int length) {
+  public static Rectangle create(double breadth, double length) {
     return new Rectangle(breadth, length);
   }
 
