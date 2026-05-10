@@ -22,4 +22,8 @@ public class Balls {
   public int filterBalls(Colors color) {
     return balls.get(color) == null ? 0 : balls.get(color).size();
   }
+
+  public boolean isWithin(int threshold, double multiplyingFactor) {
+    return threshold < Math.ceil(this.capacity * multiplyingFactor);
+  }
 }

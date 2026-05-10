@@ -1,10 +1,7 @@
 package problem_5.model;
 
 import org.junit.jupiter.api.Test;
-import problem_5.rules.GreenBallLimitException;
-import problem_5.rules.GreenBallRule;
-import problem_5.rules.RedBallLimitException;
-import problem_5.rules.RedBallRule;
+import problem_5.rules.*;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -30,7 +27,7 @@ class BagTest {
   }
 
   @Test
-  void shouldThrowWhenLimitReachedForRedBallsWhenGreenBallsare1() {
+  void shouldThrowWhenLimitReachedForRedBallsWhenGreenBallsAre1() {
     Bag bag = Bag.create(12, new RedBallRule());
 
     bag.add(new Ball(Colors.GREEN));
@@ -64,5 +61,20 @@ class BagTest {
     }
 
     assertThrows(RedBallLimitException.class, () -> bag.add(new Ball(Colors.RED)));
+  }
+
+  @Test
+  void shouldThrowWhenYellowLimitExceedsTo40Percent() {
+    Bag bag = Bag.create(12, new YellowBallRule());
+
+    bag.add(new Ball(Colors.GREEN));
+    bag.add(new Ball(Colors.RED));
+    bag.add(new Ball(Colors.RED));
+
+    for (int i = 0; i < 5; i++) {
+      bag.add(new Ball(Colors.YELLOW));
+    }
+    
+    assertThrows(YellowBallLimitException.class, () -> bag.add(new Ball(Colors.YELLOW)));
   }
 }
