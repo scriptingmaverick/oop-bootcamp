@@ -2,7 +2,7 @@ package problem_3.model;
 
 import problem_3.exception.MeasurementMismatch;
 
-public class Volume extends Measurement<VolumeUnit> {
+public class Volume extends Measurement<VolumeUnit> implements Addable<Volume> {
 
   private Volume(double volume, VolumeUnit volumeUnit) {
     super(volume, volumeUnit);
@@ -19,5 +19,12 @@ public class Volume extends Measurement<VolumeUnit> {
     }
 
     return super.compare(otherMeasurement);
+  }
+
+  public Volume add(Volume otherVolume) {
+    double rawSum = normalize(this) + normalize(otherVolume);
+    double sum = formatSum(rawSum);
+    
+    return create(sum, VolumeUnit.L);
   }
 }

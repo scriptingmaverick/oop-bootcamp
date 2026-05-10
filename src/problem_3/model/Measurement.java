@@ -13,6 +13,10 @@ public class Measurement<T extends Unit> {
     return obj.unit.normalize(obj.quantity);
   }
 
+  protected static double formatSum(double rawSum) {
+    return Math.round(rawSum * 100.0) / 100.0;
+  }
+
   public boolean compare(Measurement<T> otherMeasurement) {
     return Measurement.normalize(this) == Measurement.normalize(otherMeasurement);
   }

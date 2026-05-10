@@ -22,4 +22,14 @@ class VolumeTest {
 
     assertThrows(MeasurementMismatch.class, () -> three_78Litres.compare(three_78Cms));
   }
+  
+  @Test
+  void shouldAdd1GalAnd1LAndReturn4_78L() {
+    Volume oneGal = Volume.create(1, VolumeUnit.GAL);
+    Volume oneL = Volume.create(1, VolumeUnit.L);
+
+    Volume result = oneGal.add(oneL);
+
+    assert (result.compare(Volume.create(4.78, VolumeUnit.L)));
+  }
 }
