@@ -18,8 +18,9 @@ public class ParkingLotEventManager {
   }
 
   public void notify(ParkingEvents event) {
+    if (events.get(event) == null) return;
+    
     ArrayList<ParkingLotListener> parkingLotListeners = events.get(event);
-
     for (ParkingLotListener parkingLotListener : parkingLotListeners) {
       parkingLotListener.update(event + " has happened.");
     }
